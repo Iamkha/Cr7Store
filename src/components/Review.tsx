@@ -83,7 +83,7 @@ function Review({}: Props) {
                       +
                     </button>
                     <span className="w-80">
-                      {data.data.Numberofwarehouses} sãn phẩm có sẵn.
+                      {data.data.Numberofwarehouses} sản phẩm có sẵn.
                     </span>
                   </div>
                 </div>

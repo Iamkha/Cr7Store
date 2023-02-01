@@ -85,7 +85,7 @@ const Header = (props: Props) => {
                   {DataUser.map((data) => (
                     <p
                       key={data.data.email}
-                      className=" text-lg hover:text-red-500"
+                      className=" mx-auto mt-0 mb-0 text-lg hover:text-red-500"
                     >
                       hi: {data.data.name}
                     </p>
@@ -94,7 +94,7 @@ const Header = (props: Props) => {
                 <NavLink to={'/'}>
                   <button
                     onClick={handleDX}
-                    className=" h-10 w-28 cursor-pointer items-center justify-center gap-1 rounded-md bg-green-900 text-lg text-white transition-all duration-100 ease-in-out hover:bg-teal-700 hover:text-gray-200"
+                    className="text-md relative flex h-10 w-28  cursor-pointer  items-center justify-center gap-1 rounded-md border-solid border-gray-700 bg-green-900 text-white transition-all duration-100 ease-in-out hover:bg-teal-700 hover:text-gray-200"
                   >
                     Đăng Xuất
                   </button>
@@ -105,7 +105,7 @@ const Header = (props: Props) => {
             <NavLink to={'/Cart'}>
               <motion.button
                 whileTap={{ scale: 0.8 }}
-                className="relative flex h-10 w-28 cursor-pointer  items-center  justify-center gap-1 rounded-md border-solid border-gray-700 bg-green-900 text-lg text-white transition-all duration-100 ease-in-out hover:bg-teal-700 hover:text-gray-200"
+                className="text-md relative flex h-10 w-28  cursor-pointer  items-center justify-center gap-1 rounded-md border-solid border-gray-700 bg-green-900 text-white transition-all duration-100 ease-in-out hover:bg-teal-700 hover:text-gray-200"
               >
                 Giỏ <GiBasket />
                 <span className="align absolute -mt-4 ml-14 h-5 w-5  rounded-full bg-white text-center text-sm   text-red-600">
