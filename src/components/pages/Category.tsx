@@ -120,17 +120,20 @@ const Category = (props: Props) => {
   return (
     <div className="flex gap-20">
       <div className="w-[300px]">
-        <div className="  flex gap-5 pl-5">
-          <Link to={'/'} className="my-auto hover:text-red-500">
+        <div className=" mb-3 flex w-[300px] gap-2 pl-3">
+          <Link
+            to={'/'}
+            className="my-auto w-[100px] hover:text-red-500"
+          >
             Trang chủ
           </Link>
-          <BsArrowBarRight className="my-auto" />
-          <p>Sản phẩm.</p>
+          <BsArrowBarRight className="my-auto " />
+          <p className="m-0 ml-1 w-[120px]">Sản phẩm.</p>
         </div>
         <div>
           <div className=" w-72 rounded-md border border-solid bg-amber-100">
-            <div className="border border-solid">
-              <p className="pl-5 text-lg font-medium  text-indigo-600">
+            <div className=" my-auto mt-0 mb-0 border border-solid">
+              <p className="  pl-5 text-lg font-medium  text-indigo-600">
                 Category:
               </p>
             </div>
@@ -155,36 +158,40 @@ const Category = (props: Props) => {
           </div>
         </div>
         <div className=" mt-7">
-          <div className="w-56 rounded-xl border border-solid bg-amber-50 p-8  shadow-lg  hover:shadow-2xl ">
+          <div className="w-72 rounded-xl border border-solid bg-amber-50 p-8  shadow-lg  hover:shadow-2xl ">
             <p className="text-center text-xl font-normal text-violet-900 ">
               Giá rẻ nhất Shop.
             </p>
-            <div className="flex items-center justify-center">
+            <div className="flex  items-center justify-center">
               <Link to={'/review'}>
                 <img
                   src={data.Url}
+                  onClick={() => dispatch(addToReview({ data }))}
                   alt="cr7"
                   className="w-52 rounded-xl shadow-md "
                 />
               </Link>
             </div>
-            <p className="text-center text-xl font-normal text-red-600">
+            <p className="mt-3 text-center text-xl font-normal text-red-600">
               {data.title}.
             </p>
             <div className="flex items-center justify-center gap-6">
               <motion.button
                 onClick={() => dispatch(addToCart({ data }))}
                 whileTap={{ scale: 0.8 }}
-                className="h-9 w-32 cursor-pointer rounded-md bg-orange-500 text-xl font-semibold text-white shadow-lg transition-all duration-100 ease-in-out"
+                className="text-md h-9 w-28 cursor-pointer rounded-md border-solid border-slate-900 bg-orange-500 font-semibold text-white shadow-lg transition-all duration-100 ease-in-out"
               >
                 {data.price} $
               </motion.button>
-              <motion.button
-                whileTap={{ scale: 0.8 }}
-                className="h-9 w-32 cursor-pointer rounded-md bg-green-900 text-xl font-semibold text-white shadow-lg transition-all duration-100 ease-in-out"
-              >
-                ReView
-              </motion.button>
+              <Link to={'/review'}>
+                <motion.button
+                  onClick={() => dispatch(addToReview({ data }))}
+                  whileTap={{ scale: 0.8 }}
+                  className="text-md h-9 w-24 cursor-pointer rounded-md border-solid border-slate-900 bg-green-900 font-semibold text-white shadow-lg transition-all duration-100 ease-in-out"
+                >
+                  ReView
+                </motion.button>
+              </Link>
             </div>
           </div>
         </div>
@@ -195,7 +202,7 @@ const Category = (props: Props) => {
             <input
               onChange={handleChange}
               type={'search'}
-              className="my-auto h-7 w-72 rounded-md border-orange-400 px-3 text-lg text-violet-700 hover:border-red-800 focus:border-red-800"
+              className="text-md my-auto  h-7 w-72 rounded-md border border-orange-400 p-3 text-violet-700 hover:border-red-800 focus:border-red-800"
               placeholder="Hãy tìm kiếm đồ đẹp..."
             />
           </div>
@@ -204,25 +211,30 @@ const Category = (props: Props) => {
           <div className="flex h-[1200px] w-full flex-wrap gap-14">
             {dataS.map((data: any) => (
               <div key={data.id} className="mt-5">
-                <div className="  h-[480px] w-72 cursor-pointer rounded-md border border-solid bg-lime-50 px-4 pb-6 shadow-md  hover:shadow-2xl">
-                  <p className="tSSext-red-600 text-center text-xl font-medium">
+                <div className="  h-[540px] w-80 cursor-pointer rounded-md border border-solid bg-lime-50 px-4 pb-6 shadow-md  hover:shadow-2xl">
+                  <p className="tSSext-red-600 mt-4 h-[60px] text-center text-xl font-medium">
                     {data.title}.
                   </p>
                   <div className="flex items-center justify-center">
                     <Link to={'/review'}>
                       <img
+                        onClick={() =>
+                          dispatch(addToReview({ data }))
+                        }
                         className="h-64 w-60 rounded-md object-cover shadow-md"
                         src={data.Url}
                         alt="cr7"
                       />
                     </Link>
                   </div>
-                  <p className="text-center">{data.description}.</p>
+                  <p className="mt-3 text-center">
+                    {data.description}.
+                  </p>
                   <div className="flex items-center justify-center gap-6">
                     <motion.button
                       onClick={() => dispatch(addToCart({ data }))}
                       whileTap={{ scale: 0.8 }}
-                      className=" h-9 w-32 cursor-pointer rounded-md bg-orange-500 text-xl font-semibold text-white shadow-lg transition-all duration-100 ease-in-out"
+                      className=" text-md h-9 w-32 cursor-pointer rounded-md border-solid border-slate-900 bg-orange-500 font-semibold text-white shadow-lg transition-all duration-100 ease-in-out"
                     >
                       {data.price} $
                     </motion.button>
@@ -232,7 +244,7 @@ const Category = (props: Props) => {
                           dispatch(addToReview({ data }))
                         }
                         whileTap={{ scale: 0.8 }}
-                        className="h-9 w-32 cursor-pointer rounded-md bg-green-900 text-xl font-semibold text-white shadow-lg transition-all duration-100 ease-in-out"
+                        className="text-md h-9 w-32 cursor-pointer rounded-md border-solid border-slate-900 bg-green-900 font-semibold text-white shadow-lg transition-all duration-100 ease-in-out"
                       >
                         ReView
                         <AiOutlineShoppingCart className="my-auto" />
@@ -251,7 +263,7 @@ const Category = (props: Props) => {
             onClick={(e: any) => {
               setIndex(+e.target.value);
             }}
-            className="text-md h-7  cursor-pointer    hover:border-orange-200 hover:bg-red-300"
+            className="text-md h-7 w-16  cursor-pointer border border-gray-900  text-black  hover:bg-slate-300  disabled:bg-slate-100 disabled:hover:bg-slate-100"
           >
             Back
           </button>
@@ -264,8 +276,8 @@ const Category = (props: Props) => {
                 }}
                 className={`${
                   data.name == index
-                    ? 'text-md  h-7 cursor-pointer bg-slate-600 text-white  hover:border-orange-200 hover:bg-red-300'
-                    : 'text-md  h-7 cursor-pointer   hover:border-orange-200 hover:bg-red-300'
+                    ? 'text-md  h-7 w-7  cursor-pointer  bg-slate-600 text-white  hover:border-orange-200 hover:bg-red-300'
+                    : 'text-md  h-7 w-7 cursor-pointer border border-gray-900   hover:border-orange-200 hover:bg-red-300'
                 }`}
               >
                 {data.name}
@@ -275,7 +287,7 @@ const Category = (props: Props) => {
           <button
             disabled={disabledRight}
             onClick={handleClickPagitionRight}
-            className="text-md h-7  cursor-pointer  hover:border-orange-200 hover:bg-red-300"
+            className="text-md h-7 w-16  cursor-pointer border border-gray-900  text-black  hover:bg-slate-300  disabled:bg-slate-100 disabled:hover:bg-slate-100"
           >
             Next
           </button>

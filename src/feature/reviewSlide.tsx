@@ -11,9 +11,9 @@ export interface DataApi {
   Url: string;
   price: number;
   description: String;
-  Qty: String;
+  Qty: number;
   qty: number;
-  Numberofwarehouses: String;
+  Numberofwarehouses: number;
   Sport: number;
   Category: String;
   checkbox: boolean;
@@ -54,8 +54,25 @@ export const ReviewSlide = createSlice({
         state.items = removeCart;
       }
     },
+    decreaseCart: (state, action: PayloadAction<CartItem>) => {
+      const itemIndex = state.items.findIndex(
+        (item) => item.data.id === action.payload.data.id
+      );
+
+      if (state.items[itemIndex].data.qty > 1) {
+        state.items[itemIndex].data.qty -= 1;
+      }
+    },
+    increaseCart: (state, action: PayloadAction<CartItem>) => {
+      const itemIndex = state.items.findIndex(
+        (item) => item.data.id === action.payload.data.id
+      );
+
+      state.items[itemIndex].data.qty += 1;
+    },
   },
 });
 
-export const { addToReview } = ReviewSlide.actions;
+export const { addToReview, increaseCart, decreaseCart } =
+  ReviewSlide.actions;
 export default ReviewSlide.reducer;

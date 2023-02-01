@@ -11,9 +11,9 @@ export interface DataApi {
   Url: string;
   price: number;
   description: String;
-  Qty: String;
+  Qty: number;
   qty: number;
-  Numberofwarehouses: String;
+  Numberofwarehouses: number;
   Sport: number;
   Category: String;
   checkbox: boolean;
@@ -44,7 +44,8 @@ export const cartSlice = createSlice({
         (item) => item.data.title === action.payload.data.title
       );
       if (itemIndex >= 0) {
-        state.items[itemIndex].data.qty += 1;
+        state.items[itemIndex].data.qty =
+          state.items[itemIndex].data.qty + action.payload.data.qty;
       } else {
         const tempProduct = { ...action.payload };
         state.items.push(tempProduct);

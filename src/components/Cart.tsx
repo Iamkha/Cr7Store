@@ -61,79 +61,93 @@ const Cart = (props: Props) => {
   };
 
   return (
-    <div className="h-screen bg-slate-100">
+    <div className=" bg-slate-100">
       <Header />
       <div>
-        <div className="mx-auto mt-20 w-[80%]">
+        <div className="mx-auto mt-7  w-[80%]  pb-20">
           <div>Danh sách sản phẩm:</div>
-          <div className="flex justify-end">
-            <div className="flex w-[80%] items-center justify-between ">
-              <p>Sản phẩm</p>
-              <p>Đơn giá</p>
-              <p>Số lượng</p>
-              <p>Tổng tiền</p>
-              <p>Thao tác</p>
-            </div>
+          <div className="flex justify-center">
+            <ul className="flex w-[70%] items-center justify-between ">
+              <li>Sản phẩm</li>
+              <li>Đơn giá</li>
+              <li>Số lượng</li>
+              <li>Tổng tiền</li>
+            </ul>
           </div>
           {Datacart.map((data: any, index: number) => (
             <div key={index} className="mt-3">
-              <div className="flex">
-                <input
-                  type={'checkbox'}
-                  className="cursor-pointer"
-                  checked={data.data.checkbox}
-                  onChange={() => handleCheckInput(data.data)}
-                />
-                <img
-                  src={data.data.Url}
-                  alt="Cr7 Store"
-                  className="ml-6 h-24 w-20 rounded-md object-cover"
-                />
-                <p className=" my-auto ml-44 w-64">
-                  {data.data.title}
-                </p>
-                <p className="my-auto ml-10 w-64">
-                  {data.data.price} $
-                </p>
-                <div className=" mr-20  ml-3 flex items-center justify-center gap-5">
-                  <button
-                    onClick={() => {
-                      handleQTVT(data.data);
-                    }}
-                    className="text-md m-0 h-7 w-7 cursor-pointer p-0 text-center"
-                  >
-                    -
-                  </button>
+              <ul className="-ml-16 flex items-center justify-center">
+                <li>
+                  <input
+                    type={'checkbox'}
+                    className="cursor-pointer"
+                    checked={data.data.checkbox}
+                    onChange={() => handleCheckInput(data.data)}
+                  />
+                </li>
+                <li>
+                  <img
+                    src={data.data.Url}
+                    alt="Cr7 Store"
+                    className="ml-16 mr-3 h-24 w-20 rounded-md object-cover"
+                  />
+                </li>
+                <li>
+                  <p className=" my-auto ml-32 w-72">
+                    {data.data.title}
+                  </p>
+                </li>
+                <li>
+                  <p className="my-auto ml-10 w-72">
+                    {data.data.price} $
+                  </p>
+                </li>
+                <li>
+                  <div className=" mr-20  ml-5 flex items-center justify-center gap-5">
+                    <button
+                      onClick={() => {
+                        handleQTVT(data.data);
+                      }}
+                      className="text-md m-0  h-7 w-7 cursor-pointer border border-gray-900 p-0 text-center font-semibold"
+                    >
+                      -
+                    </button>
 
-                  <p>{data.data.qty}</p>
-                  <button
-                    onClick={() => {
-                      handleQTVP(data.data);
-                    }}
-                    className="text-md m-0 h-7 w-7 cursor-pointer p-0 text-center"
-                  >
-                    +
-                  </button>
-                </div>
-                <p className="my-auto ml-28 w-64">
-                  {data.data.qty * data.data.price} $
-                </p>
+                    <p className="my-auto mt-0 mb-0 w-10 text-center ">
+                      {data.data.qty}
+                    </p>
+
+                    <button
+                      onClick={() => {
+                        handleQTVP(data.data);
+                      }}
+                      className="text-md m-0  h-7 w-7 cursor-pointer border border-gray-900 p-0 text-center font-semibold"
+                    >
+                      +
+                    </button>
+                  </div>
+                </li>
+                <li>
+                  <p className="my-auto ml-12 w-60">
+                    {data.data.qty * data.data.price} $
+                  </p>
+                </li>
                 <motion.button
                   whileTap={{ scale: 0.8 }}
-                  className=" my-auto ml-9 h-10 w-16 cursor-pointer rounded-md bg-orange-900 text-lg   font-normal text-white hover:bg-orange-600"
+                  className=" my-auto ml-7 h-10 w-16 cursor-pointer rounded-md bg-orange-900 text-lg   font-normal text-white hover:bg-orange-600"
                   onClick={() => {
                     handleRemove(data.data);
                   }}
                 >
                   Xoá
                 </motion.button>
-              </div>
+              </ul>
             </div>
           ))}
-          <div className="mt-16 flex justify-end">
+          <div className="mt-7 flex justify-end">
             <div className=" flex gap-10">
               <p>Tổng tiền tất cả sản phẩm:</p>
-              <p>{sumWithInitial}$</p>
+              <p className="w-40">{sumWithInitial}$</p>
             </div>
           </div>
           <div className="mt-7 flex justify-end">
@@ -141,7 +155,7 @@ const Cart = (props: Props) => {
               <p>
                 Tổng tiền phải thanh toán các sản phẩm bạn đã chọn:
               </p>
-              <p>{Pay} $</p>
+              <p className="w-40">{Pay} $</p>
             </div>
           </div>
           <div className="mt-7 flex justify-end">

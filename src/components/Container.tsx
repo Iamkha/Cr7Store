@@ -5,9 +5,9 @@ type Props = {};
 
 const Container = (props: Props) => {
   return (
-    <div className=" h-80 w-full  bg-slate-100">
-      <div className=" flex h-20 items-center justify-center gap-5">
-        <p className="font- text-4xl text-red-900">
+    <div className=" h-[90] w-full bg-slate-100  p-11">
+      <div className=" flex h-20 items-center justify-center  gap-5">
+        <p className="my-auto mt-0 mb-0 text-4xl font-semibold text-red-900">
           Cristiano Ronaldo IS GOAT!
         </p>
         <img className="h-36" src={LogoConTen} alt="LogoConTen" />
