@@ -3,12 +3,14 @@ import { decreaseCart, increaseCart } from '@/feature/reviewSlide';
 import { useAppDispatch, useAppSelector } from '@/store';
 import Footer from './Footer';
 import Header from './Header';
+import { Link } from 'react-scroll';
+import RelatedProducts from './pages/RelatedProducts';
 
 type Props = {};
 
 function Review({}: Props) {
   const dataReview = useAppSelector((state) => state.review.items);
-  console.log(dataReview, 'data');
+
   const dispatch = useAppDispatch();
   const handleQTVP = (data: any) => {
     dispatch(increaseCart({ data }));
@@ -21,12 +23,12 @@ function Review({}: Props) {
     dispatch(addToCart({ data }));
   };
   return (
-    <div>
-      <div>
+    <div id="kha">
+      <div className="sticky">
         <Header />
       </div>
-      <div className="mt-16 mb-16 bg-slate-100">
-        {dataReview.map((data) => (
+      <div className="mt-16 mb-16 bg-slate-100 p-20">
+        {dataReview.map((data: any) => (
           <div
             key={data.data.id}
             className="  right-0 left-0 mx-auto flex w-[70%]  justify-between border-solid"
@@ -112,6 +114,9 @@ function Review({}: Props) {
         ))}
         <div></div>
         <div></div>
+        <div className="mt-20">
+          <RelatedProducts />
+        </div>
       </div>
       <div>
         <Footer />

@@ -3,6 +3,8 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "alwaysStrict": true,
+    "strictNullChecks": true,
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],

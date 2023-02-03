@@ -186,16 +186,19 @@ export const DataUser: Datauser[] = [
   {
     email: 'phuockha2852001@gmail.com',
     name: 'Kha',
-    password: 'taolakha',
+    password: 'lephuockha',
+    admin: 1,
   },
   {
     email: 'phuockha@gmail.com',
     name: 'Kha',
-    password: 'taolabunn',
+    password: 'lephuockha',
+    admin: 0,
   },
   {
     email: 'phuockha285@gmail.com',
     name: 'Kha',
-    password: 'taolabunn26',
+    password: 'lephuockha',
+    admin: 0,
   },
 ];

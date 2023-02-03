@@ -1,0 +1,34 @@
+.Todo {
+  display: flex;
+  margin: 0 -3rem 4px;
+  padding: 1.1rem 3rem;
+  height: 20px;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: opacity 500ms ease-in-out;
+}
+.Todo.completed {
+  transition: opacity 300ms ease-in-out;
+  transition-delay: 200ms;
+  opacity: 0.5;
+}
+
+.Todo.completed .Todo-task:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -0.5rem;
+  display: block;
+  width: 0%;
+  height: 4px;
+  background: #fff;
+  animation: strikeitem 0.3s ease-in 0s forwards;
+}
+@keyframes strikeitem {
+  to {
+    width: calc(100% + 1rem);
+  }
+}

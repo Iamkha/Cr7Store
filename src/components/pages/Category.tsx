@@ -3,7 +3,7 @@ import { BsArrowBarRight } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import react, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAppDispatch } from '@/store';
 import { addToCart } from '@/feature/cartSlide';
 import { addToReview } from '@/feature/reviewSlide';

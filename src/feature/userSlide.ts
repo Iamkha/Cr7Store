@@ -5,6 +5,7 @@ export interface Datauser {
   email: string;
   name: string;
   password: string;
+  admin: number;
 }
 
 export interface UserItem {
