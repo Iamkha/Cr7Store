@@ -17,7 +17,8 @@ const Category = (props: Props) => {
   const [search, setSearch] = useState('');
 
   const Datalenght = dataApi.length;
-  const paging = Math.ceil(Datalenght / 3);
+  const paging = Math.ceil(Datalenght / 4);
+  console.log('pa', paging);
 
   const data = dataApi.reduce((ar1, ar2) => {
     if (ar1.price < ar2.price) {
@@ -30,13 +31,13 @@ const Category = (props: Props) => {
   const DataConfig = dataApi.reduce((ar1: any, ar2) => {
     if (
       cate === 'Tất cả sản Phẩm' &&
-      ar1.length < paging &&
+      ar1.length < 4 &&
       ar2.id > index * 4 - 4
     ) {
       ar1.push(ar2);
     } else if (
       cate === ar2.Category &&
-      ar1.length < paging &&
+      ar1.length < 4 &&
       ar2.id > index * 4 - 4
     ) {
       ar1.push(ar2);
@@ -53,8 +54,8 @@ const Category = (props: Props) => {
     return ar1;
   }, []);
 
-  const pigatition = Math.ceil(DataConfig2.length / paging);
-  const lPigatition = Math.max(1, pigatition);
+  // const pigatition = Math.ceil(DataConfig2.length / paging);
+  const lPigatition = Math.max(1, paging);
   const arr = new Array(lPigatition);
 
   const dataC = arr.fill(1).map((item, index) => {
@@ -71,13 +72,13 @@ const Category = (props: Props) => {
     (ar1: any, ar2: any, index2: any) => {
       if (
         cate === 'Tất cả sản Phẩm' &&
-        ar1.length < paging &&
+        ar1.length < 4 &&
         index2 > index * 4 - 5
       ) {
         ar1.push(ar2);
       } else if (
         cate === ar2.Category &&
-        ar1.length < paging &&
+        ar1.length < 4 &&
         index2 > index * 4 - 5
       ) {
         ar1.push(ar2);
@@ -102,11 +103,11 @@ const Category = (props: Props) => {
   const dataS = search !== '' ? DataConfig3 : DataConfig;
 
   const disabledRight =
-    search !== '' ? index >= pigatitionS : index >= pigatition;
+    search !== '' ? index >= pigatitionS : index >= paging;
 
   const handleClickPagitionRight = () => {
     const index2 = index + 1;
-    setIndex(Math.min(index2, pigatition));
+    setIndex(Math.min(index2, paging));
   };
 
   const handleChange = (e: any) => {

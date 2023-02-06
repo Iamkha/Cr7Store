@@ -1,33 +1,11 @@
-import React, { useEffect } from 'react';
-import Header from './Header';
-import { motion } from 'framer-motion';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Header from './Header';
 import { dataApi } from '@/fectApi';
-import { DataApi } from '@/feature/cartSlide';
 
 type Props = {};
 
-const pushs = {
-  id: 14,
-  title: 'Số 28 huyền thoại Sporting Lisbon',
-  Url: 'https://vcdn1-thethao.vnecdn.net/2012/04/08/106e64e110220639ff082faef0d8ea15.jpg?w=480&h=0&q=100&dpr=1&fit=crop&s=uBi-ysCSVWrFSqwJ2BZfAg',
-  price: 89000,
-  description:
-    'Hàng chất lượng cao, nhập khẩu chính hãng, đọc lạ duy nhất tại Việt nam',
-  Qty: 543,
-  qty: 1,
-  Numberofwarehouses: 2,
-  Sport: 1,
-  Category: 'Áo quần thể thao',
-  checkbox: false,
-};
-
-const ProductManagement = (props: Props) => {
-  useEffect(() => {
-    dataApi.push(pushs);
-
-    console.log('helo', dataApi);
-  }, [dataApi]);
+function ListProduct({}: Props) {
   return (
     <div>
       <div>
@@ -69,10 +47,23 @@ const ProductManagement = (props: Props) => {
             </NavLink>
           </div>
         </div>
-        <div className="basis-3/4 text-center">content</div>
+        <div className="basis-3/4 text-center">
+          {dataApi.map((data) => (
+            <div>
+              <p>{data.title}</p>
+              <img src={data.Url} alt="cr7" />
+              <p>{data.description}</p>
+              <p>{data.price}</p>
+              <p>{data.Qty}</p>
+              <p>{data.Numberofwarehouses}</p>
+              <button className="">sửa</button>
+              <button className="">xoá</button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
-};
+}
 
-export default ProductManagement;
+export default ListProduct;

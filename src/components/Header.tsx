@@ -14,10 +14,8 @@ const Header = (props: Props) => {
   const dataUser = useAppSelector((state) => state.user.users);
   const [checkUse, setCheckUse] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
-  const [input, setInput] = useState(false);
-  const [value, setValue] = useState('kha');
-
-  console.log(value);
+  // const [input, setInput] = useState(false);
+  // const [value, setValue] = useState('kha');
 
   const dispatch = useAppDispatch();
   const userRef = useRef<any>();
@@ -117,12 +115,13 @@ const Header = (props: Props) => {
             <p className="my-auto">Sản phẩm</p>
           </NavLink>
         </motion.div>
-        {input ? (
+        {/* {input ? (
           <div>
             <input
               value={value}
               onChange={(e) => setValue(e.target.value)}
             />
+            // edit
             <button
               onClick={() => {
                 setInput(!input);
@@ -142,8 +141,8 @@ const Header = (props: Props) => {
               sads
             </button>
           </div>
-        )}
-        <div className="">
+        )} */}
+        <div>
           <div className="flex items-center justify-between gap-3">
             {dataUser.length === 0 ? (
               <NavLink to={'/login'}>

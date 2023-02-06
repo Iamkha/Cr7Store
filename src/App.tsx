@@ -6,12 +6,14 @@ import Home from './components/Home';
 import Cart from './components/Cart';
 import Product from './components/Product';
 import Login from './components/Login';
-import Logout from './components/Logout';
+
 import Review from './components/Review';
 import Payment from './components/Payment';
 import ProFile from './components/ProFile';
 import ProductManagement from './components/ProductManagement';
 import AddCart from './components/AddCart';
+import NewProduct from './components/NewProduct';
+import ListProduct from './components/ListProduct';
 
 function App() {
   const location = useLocation();
@@ -26,12 +28,13 @@ function App() {
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Product" element={<Product />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Logout" element={<Logout />} />
         <Route path="/review" element={<Review />} />
         <Route path="/Payment" element={<Payment />} />
         <Route path="/profile" element={<ProFile />} />
         <Route path="/addcart" element={<AddCart />} />
         <Route path="/editcart" element={<AddCart />} />
+        <Route path="/newproduct" element={<NewProduct />} />
+        <Route path="/listproduct" element={<ListProduct />} />
         <Route
           path="/productmanagement"
           element={<ProductManagement />}
