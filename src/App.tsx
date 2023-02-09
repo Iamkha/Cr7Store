@@ -10,7 +10,7 @@ import Login from './components/Login';
 import Review from './components/Review';
 import Payment from './components/Payment';
 import ProFile from './components/ProFile';
-import ProductManagement from './components/ProductManagement';
+
 import AddCart from './components/AddCart';
 import NewProduct from './components/NewProduct';
 import ListProduct from './components/ListProduct';
@@ -33,12 +33,8 @@ function App() {
         <Route path="/profile" element={<ProFile />} />
         <Route path="/addcart" element={<AddCart />} />
         <Route path="/editcart" element={<AddCart />} />
-        <Route path="/newproduct" element={<NewProduct />} />
-        <Route path="/listproduct" element={<ListProduct />} />
-        <Route
-          path="/productmanagement"
-          element={<ProductManagement />}
-        />
+        <Route path="/admin/newproduct" element={<NewProduct />} />
+        <Route path="/admin/listproduct" element={<ListProduct />} />
       </Routes>
     </div>
   );

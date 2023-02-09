@@ -3,7 +3,7 @@ import { BsArrowBarRight } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch } from '@/store';
 import { addToCart } from '@/feature/cartSlide';
 import { addToReview } from '@/feature/reviewSlide';
@@ -16,10 +16,7 @@ const Category = (props: Props) => {
   const [index, setIndex] = useState<number>(1);
   const [search, setSearch] = useState('');
 
-  const Datalenght = dataApi.length;
-  const paging = Math.ceil(Datalenght / 4);
-  console.log('pa', paging);
-
+  //giá rẻ nhất
   const data = dataApi.reduce((ar1, ar2) => {
     if (ar1.price < ar2.price) {
       return ar1;
@@ -28,6 +25,7 @@ const Category = (props: Props) => {
     }
   });
 
+  //tất cả sản phẩm
   const DataConfig = dataApi.reduce((ar1: any, ar2) => {
     if (
       cate === 'Tất cả sản Phẩm' &&
@@ -45,6 +43,7 @@ const Category = (props: Props) => {
     return ar1;
   }, []);
 
+  // search sản phẩm
   const DataConfig2 = dataApi.reduce((ar1: any, ar2) => {
     if (cate === 'Tất cả sản Phẩm') {
       ar1.push(ar2);
@@ -53,14 +52,6 @@ const Category = (props: Props) => {
     }
     return ar1;
   }, []);
-
-  // const pigatition = Math.ceil(DataConfig2.length / paging);
-  const lPigatition = Math.max(1, paging);
-  const arr = new Array(lPigatition);
-
-  const dataC = arr.fill(1).map((item, index) => {
-    return { id: index++, name: index++ };
-  });
 
   const dataSearch = DataConfig2.filter((item: any) => {
     return search.toLowerCase() === ''
@@ -87,11 +78,21 @@ const Category = (props: Props) => {
     },
     []
   );
+  const dataS = search !== '' ? DataConfig3 : DataConfig;
 
-  const pigatitionS = Math.ceil(dataSearch.length / paging);
+  // pigation
+  const lenght = DataConfig2.length || 1;
+  const paging = Math.ceil(lenght / 4);
+  const lPigatition = Math.max(1, paging);
+  const arr = new Array(lPigatition);
 
+  const dataC = arr.fill(1).map((item, index) => {
+    return { id: index++, name: index++ };
+  });
+
+  const lenght2 = dataSearch.length || 1;
+  const pigatitionS = Math.ceil(lenght2 / 4);
   const lPigatitionS = Math.max(1, pigatitionS);
-
   const arrS = new Array(lPigatitionS);
 
   const dataCS = arrS.fill(1).map((item, index) => {
@@ -100,11 +101,11 @@ const Category = (props: Props) => {
 
   const dataCSS = search !== '' ? dataCS : dataC;
 
-  const dataS = search !== '' ? DataConfig3 : DataConfig;
-
+  //disable
   const disabledRight =
     search !== '' ? index >= pigatitionS : index >= paging;
 
+  //handle
   const handleClickPagitionRight = () => {
     const index2 = index + 1;
     setIndex(Math.min(index2, paging));
@@ -137,6 +138,19 @@ const Category = (props: Props) => {
               <p className="  pl-5 text-lg font-medium  text-indigo-600">
                 Category:
               </p>
+            </div>
+            <div>
+              <button
+                value={'Tất cả sản Phẩm'}
+                onClick={handleCatrgory}
+                className={`${
+                  'Tất cả sản Phẩm' === cate
+                    ? ' h-11 w-full cursor-pointer border-none bg-red-400 text-lg outline-none'
+                    : ' h-11 w-full cursor-pointer border-none bg-amber-100 text-lg outline-none'
+                }`}
+              >
+                Tất cả sản Phẩm
+              </button>
             </div>
             {Categorys.map((category, index) => (
               <div
@@ -209,7 +223,7 @@ const Category = (props: Props) => {
           </div>
         </div>
         <div>
-          <div className="flex h-[1200px] w-full flex-wrap gap-14">
+          <div className="flex h-[1250px] w-full flex-wrap gap-14">
             {dataS.map((data: any) => (
               <div key={data.id} className="mt-5">
                 <div className="  h-[540px] w-80 cursor-pointer rounded-md border border-solid bg-lime-50 px-4 pb-6 shadow-md  hover:shadow-2xl">

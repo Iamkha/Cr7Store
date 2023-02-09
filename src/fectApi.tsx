@@ -173,7 +173,6 @@ export const dataApi: DataApi[] = [
 ];
 
 export const Categorys = [
-  { Category: 'Tất cả sản Phẩm' },
   { Category: 'Áo quần trẻ em' },
   { Category: 'Áo quần thể thao' },
   { Category: 'Áo quần nữ' },

@@ -167,7 +167,7 @@ const Header = (props: Props) => {
                 {isMenu && (
                   <div
                     ref={menuRef}
-                    className="absolute right-[310px] top-16  w-[260px]  rounded-xl bg-slate-200 p-7 shadow-lg"
+                    className="absolute right-[310px] top-16  w-[300px]  rounded-xl bg-slate-200 p-7 shadow-lg"
                   >
                     <div className="gap-5">
                       <Link to={'/profile'}>
@@ -176,11 +176,18 @@ const Header = (props: Props) => {
                         </p>
                       </Link>
                       {checkUse && (
-                        <Link to={'/productmanagement'}>
-                          <p className="text-lg font-normal">
-                            Quản lý sản phẩm.
-                          </p>
-                        </Link>
+                        <div>
+                          <Link to={'/admin/listproduct'}>
+                            <p className="text-lg font-normal">
+                              Danh sách sản phẩm.
+                            </p>
+                          </Link>
+                          <Link to={'/admin/newproduct'}>
+                            <p className="text-lg font-normal">
+                              Thêm sản phẩm.
+                            </p>
+                          </Link>
+                        </div>
                       )}
                     </div>
                     <div className=" flex items-center justify-center  border-x-0 border-b-0 border-solid border-t-red-900">
